@@ -48,7 +48,7 @@ static const Layout layouts[] = {
  * Mod+Shift+n => tag window with tag N (aka move window to N)
  * */
 
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
