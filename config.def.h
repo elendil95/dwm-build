@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -33,7 +34,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 }, */
 };
 
 /* layout(s) */
@@ -75,8 +76,16 @@ static const char *filemanagercmd[]  = { "urxvt", "-e", "ranger", NULL };
 static const char *musicplayercmd[]  = { "urxvt", "-e", "cmus", NULL };
 static const char *calendarcmd[]  = { "urxvt", "-e", "calcurse", NULL };
 
-//System Scripts
+//System Scripts/Commands
 static const char *sessmngrscript[]  = { "dmenu_session_manager", NULL };
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+/* static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL }; */
+static const char *brightupcmd[] = { "urxvt", "-e", "light", "-A", "10", NULL };
+static const char *brightdowncmd[] = { "urxvt", "-e", "light", "-U", "10", NULL };
+/* static const char *brightdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL }; */
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -118,6 +127,11 @@ static Key keys[] = {
 	{ MODKEY,             XK_m, spawn,          {.v = musicplayercmd } },
 	{ MODKEY,             XK_c, spawn,          {.v = calendarcmd } },
 	{ MODKEY|ControlMask,             XK_r,      spawn,           {.v = sessmngrscript } },
+    { 0,    XF86XK_AudioMute, spawn, {.v = mutecmd } },
+    { 0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+    { 0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+    { 0, XF86XK_MonBrightnessUp, spawn, {.v = brightupcmd} },
+    { 0, XF86XK_MonBrightnessDown, spawn, {.v = brightdowncmd} },
 };
 
 /* button definitions */
