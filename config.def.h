@@ -67,7 +67,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /* static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-p", "Run: ", "-fn", dmenufont, "-nb" "#000000" "-nf" "#fefefe", NULL }; */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-p", "Run: ", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *passcmd[]  = { "keepass", NULL };
@@ -77,7 +77,10 @@ static const char *musicplayercmd[]  = { "urxvt", "-e", "cmus", NULL };
 static const char *calendarcmd[]  = { "urxvt", "-e", "calcurse", NULL };
 
 //System Scripts/Commands
-static const char *sessmngrscript[]  = { "dmenu_session_manager", NULL };
+static const char *sessmngrscript[]  = { "/home/elendil/bin/dmenu_session_manager", NULL };
+static const char *lockscript[]  = { "/home/elendil/bin/lock_screen.sh", NULL };
+static const char *screenshotscript[]  = { "/home/elendil/bin/screenshot.sh", NULL };
+static const char *screenshotareascript[]  = { "/home/elendil/bin/screenshot.sh", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
@@ -126,7 +129,10 @@ static Key keys[] = {
 	{ MODKEY,             XK_f, spawn,          {.v = filemanagercmd } },
 	{ MODKEY,             XK_m, spawn,          {.v = musicplayercmd } },
 	{ MODKEY,             XK_c, spawn,          {.v = calendarcmd } },
-	{ MODKEY|ControlMask,             XK_r,      spawn,           {.v = sessmngrscript } },
+	{ MODKEY|ControlMask, XK_r, spawn,           {.v = sessmngrscript } },
+	{ MODKEY|ControlMask, XK_l, spawn,           {.v = lockscript } },
+	{ 0,                  XK_Print, spawn,           {.v = screenshotscript } },
+	{ MODKEY,             XK_Print, spawn,           {.v = screenshotareascript } },
     { 0,    XF86XK_AudioMute, spawn, {.v = mutecmd } },
     { 0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
     { 0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
