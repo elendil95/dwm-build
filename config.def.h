@@ -5,6 +5,7 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int rmaster            = 0;        /* 1 means master-area is initially on the right */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
@@ -87,7 +88,6 @@ static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unm
 /* static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL }; */
 static const char *brightupcmd[] = { "urxvt", "-e", "light", "-A", "10", NULL };
 static const char *brightdowncmd[] = { "urxvt", "-e", "light", "-U", "10", NULL };
-/* static const char *brightdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL }; */
 
 
 static Key keys[] = {
@@ -107,6 +107,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      killclient,     {0} }, // Close focused window
 	{ MODKEY,                       XK_Tab,    setlayout,      {0} }, // toggle between layouts
 	{ MODKEY|ShiftMask,             XK_t,      togglefloating, {0} }, // Toggle floating
+    /* { MODKEY,                       XK_r,      togglermaster,  {0} }, */
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
