@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
-
+#include "selfrestart.c"
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
@@ -126,13 +126,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	{ MODKEY|ControlMask,             XK_q,      quit,           {0} },
+    { MODKEY|ControlMask,               XK_r,      self_restart,   {0} },
 	{ MODKEY,             XK_b, spawn,          {.v = browsercmd } },
 	{ MODKEY,             XK_p, spawn,          {.v = passcmd } },
 	{ MODKEY,             XK_e, spawn,          {.v = emailcmd } },
 	{ MODKEY,             XK_f, spawn,          {.v = filemanagercmd } },
 	{ MODKEY,             XK_m, spawn,          {.v = musicplayercmd } },
 	{ MODKEY,             XK_c, spawn,          {.v = calendarcmd } },
-	{ MODKEY|ControlMask, XK_r, spawn,           {.v = sessmngrscript } },
+	{ MODKEY|ControlMask, XK_x, spawn,           {.v = sessmngrscript } },
 	{ MODKEY|ControlMask, XK_l, spawn,           {.v = lockscript } },
 	{ 0,                  XK_Print, spawn,           {.v = screenshotscript } },
 	{ MODKEY,             XK_Print, spawn,           {.v = screenshotareascript } },
