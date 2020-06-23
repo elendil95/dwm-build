@@ -79,6 +79,7 @@ static const char *emailcmd[]  = { "thunderbird", NULL };
 static const char *filemanagercmd[]  = { "urxvt", "-e", "ranger", NULL };
 static const char *musicplayercmd[]  = { "urxvt", "-e", "cmus", NULL };
 static const char *calendarcmd[]  = { "urxvt", "-e", "calcurse", NULL };
+static const char *calccmd[]  = { "gnome-calculator", NULL };
 
 //System Scripts/Commands
 static const char *sessmngrscript[]  = { "/home/elendil/bin/dmenu_session_manager", NULL };
@@ -136,6 +137,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_f, spawn,          {.v = filemanagercmd } },
 	{ MODKEY,             XK_m, spawn,          {.v = musicplayercmd } },
 	{ MODKEY,             XK_c, spawn,          {.v = calendarcmd } },
+	{ MODKEY|ShiftMask,             XK_c, spawn,          {.v = calccmd } },
 	{ MODKEY|ControlMask, XK_x, spawn,           {.v = sessmngrscript } },
 	{ MODKEY|ControlMask, XK_l, spawn,           {.v = lockscript } },
 	{ 0,                  XK_Print, spawn,           {.v = screenshotscript } },
