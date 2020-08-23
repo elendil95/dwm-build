@@ -79,9 +79,9 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *passcmd[]  = { "keepass", NULL };
 static const char *emailcmd[]  = { "thunderbird", NULL };
-static const char *filemanagercmd[]  = { "urxvt", "-e", "ranger", NULL };
-static const char *musicplayercmd[]  = { "urxvt", "-e", "cmus", NULL };
-static const char *calendarcmd[]  = { "urxvt", "-e", "calcurse", NULL };
+static const char *filemanagercmd[]  = { "st", "-e", "ranger", NULL };
+static const char *musicplayercmd[]  = { "st", "-e", "cmus", NULL };
+static const char *calendarcmd[]  = { "st", "-e", "calcurse", NULL };
 static const char *calccmd[]  = { "gnome-calculator", NULL };
 
 //System Scripts/Commands
@@ -111,7 +111,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },      // Make Master smaller
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },      // Make Master bigger
 	{ MODKEY|ShiftMask,             XK_space,  zoom,           {0} },               // Set focused window as Master
-	{ MODKEY|ShiftMask,             XK_Tab,    view,           {0} },               // Toggle to the previously selected tag (??)
+	{ MODKEY|ShiftMask,             XK_Tab,    view,           {0} },               // Toggle to the previously focused tag
 	{ MODKEY,                       XK_w,      killclient,     {0} },               // Close focused window
 	{ MODKEY,                       XK_Tab,    setlayout,      {0} },               // Cycle layouts
   //{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },    // Set tiled layout
@@ -119,8 +119,8 @@ static Key keys[] = {
   //{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },    // Set floating layout
     { MODKEY|ShiftMask,             XK_t,      togglefloating, {0} },                   // Toggle floating for the focused window
  // { MODKEY,                       XK_r,      togglermaster,  {0} },               // Toggle Master area on right or left
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },       // view all windows with any tag (??)
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },       // apply all tags to focused window (??)
+ //	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },       // view all windows with any tag (view all windows on all tags at once)
+//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },       // apply all tags to focused window (so that it shows on any tag)
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },        // Focus previous screen
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },        // Focus next screen
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },        // Send focused window to previous scr
