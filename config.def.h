@@ -105,7 +105,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },        // Focus window down in the stack
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },        // Focus window up in the stack
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },        // Move window down in the stack
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },        // Move window down in the stack
+	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },        // Move window up in the stack
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },        // Increase nr of windows in master area
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },        // Ddecrease number of windows in master area
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },      // Make Master smaller
@@ -119,7 +119,7 @@ static Key keys[] = {
   //{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },    // Set floating layout
     { MODKEY|ShiftMask,             XK_t,      togglefloating, {0} },                   // Toggle floating for the focused window
  // { MODKEY,                       XK_r,      togglermaster,  {0} },               // Toggle Master area on right or left
- //	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },       // view all windows with any tag (view all windows on all tags at once)
+ 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },       // view all windows with any tag (view all windows on all tags at once)
 //	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },       // apply all tags to focused window (so that it shows on any tag)
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },        // Focus previous screen
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },        // Focus next screen
