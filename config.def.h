@@ -54,11 +54,13 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
 
-/* key definitions for workspaces:
- * Mod+n => View tag (workspace N)
- * Mod+Shift+n => tag window with tag N (aka move window to N)
- * */
-
+/*
+ * --- TAG KEYS ---
+ *  Mod + n => view windows with tag n (aka view workspace n)
+ *  Mod + Shift + n => apply n tag to focused window (move window to workspace n)
+ *  Mod + Ctrl + n => add/remove all windows with tag n from/to view
+ *  Mod + Ctrl + Shift + n => add remove n tag to/from focused window
+ */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -73,7 +75,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /* static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-p", "Run: ", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL }; */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-p", "Run: ", "-fn", dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *passcmd[]  = { "keepass", NULL };
 static const char *emailcmd[]  = { "thunderbird", NULL };
@@ -97,31 +99,37 @@ static const char *brightdowncmd[] = { "urxvt", "-e", "light", "-U", "10", NULL 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } }, // focus window down in the stack
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } }, // focus window up in the stack
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } }, // create window in master stack
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } }, // remove window from master stack
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, // make Master smaller
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} }, // make Master bigger
-	{ MODKEY|ShiftMask,             XK_space,  zoom,           {0} }, //Set focused window as Master
-	{ MODKEY|ShiftMask,             XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_w,      killclient,     {0} }, // Close focused window
-	{ MODKEY,                       XK_Tab,    setlayout,      {0} }, // toggle between layouts
-	{ MODKEY|ShiftMask,             XK_t,      togglefloating, {0} }, // Toggle floating
-    /* { MODKEY,                       XK_r,      togglermaster,  {0} }, */
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,                       XK_minus,  setgaps,        {.i = -1 } }, // Make gaps smaller
-	{ MODKEY|ControlMask,                       XK_plus,  setgaps,        {.i = +1 } }, // Make gaps bigger
-	{ MODKEY|ControlMask,             XK_equal,  setgaps,        {.i = 0  } }, // Reset gaps
+	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },  // Open dmenu
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },   // Open terminal
+	//{ MODKEY,                     XK_b,      togglebar,      {0} },               // Toggle bar
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },        // Focus window down in the stack
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },        // Focus window up in the stack
+	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },        // Move window down in the stack
+	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },        // Move window down in the stack
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },        // Increase nr of windows in master area
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },        // Ddecrease number of windows in master area
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },      // Make Master smaller
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },      // Make Master bigger
+	{ MODKEY|ShiftMask,             XK_space,  zoom,           {0} },               // Set focused window as Master
+	{ MODKEY|ShiftMask,             XK_Tab,    view,           {0} },               // Toggle to the previously selected tag (??)
+	{ MODKEY,                       XK_w,      killclient,     {0} },               // Close focused window
+	{ MODKEY,                       XK_Tab,    setlayout,      {0} },               // Cycle layouts
+  //{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },    // Set tiled layout
+  //{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },    // Set monocle layout
+  //{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },    // Set floating layout
+    { MODKEY|ShiftMask,             XK_t,      togglefloating, {0} },                   // Toggle floating for the focused window
+ // { MODKEY,                       XK_r,      togglermaster,  {0} },               // Toggle Master area on right or left
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },       // view all windows with any tag (??)
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },       // apply all tags to focused window (??)
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },        // Focus previous screen
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },        // Focus next screen
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },        // Send focused window to previous scr
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },        // Send focused window to next screen
+	{ MODKEY|ControlMask,           XK_minus,  setgaps,        {.i = -1 } },        // Make gaps smaller
+	{ MODKEY|ControlMask,           XK_plus,  setgaps,        {.i = +1 } },         // Make gaps bigger
+	{ MODKEY|ControlMask,           XK_equal,  setgaps,        {.i = 0  } },        // Reset gaps
+	{ MODKEY|ControlMask,           XK_q,      quit,           {0} },               // Quit DWM
+    { MODKEY|ControlMask,           XK_r,      self_restart,   {0} },               // Restart DWM
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -130,8 +138,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_6,                      5)
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
-	{ MODKEY|ControlMask,             XK_q,      quit,           {0} },
-    { MODKEY|ControlMask,               XK_r,      self_restart,   {0} },
 	{ MODKEY,             XK_b, spawn,          {.v = browsercmd } },
 	{ MODKEY,             XK_p, spawn,          {.v = passcmd } },
 	{ MODKEY,             XK_e, spawn,          {.v = emailcmd } },
