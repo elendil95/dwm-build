@@ -5,6 +5,8 @@
 #include "/home/elendil/.cache/wal/colors-wal-dwm.h"
 
 /* appearance */
+static const char kblayouts[3][3]   = {"it", "dk", "us"};
+#include "change_layout.h"
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -126,10 +128,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },        // Send focused window to previous scr
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },        // Send focused window to next screen
 	{ MODKEY|ControlMask,           XK_minus,  setgaps,        {.i = -1 } },        // Make gaps smaller
-	{ MODKEY|ControlMask,           XK_plus,  setgaps,        {.i = +1 } },         // Make gaps bigger
+	{ MODKEY|ControlMask,           XK_plus,   setgaps,        {.i = +1 } },        // Make gaps bigger
 	{ MODKEY|ControlMask,           XK_equal,  setgaps,        {.i = 0  } },        // Reset gaps
 	{ MODKEY|ControlMask,           XK_q,      quit,           {0} },               // Quit DWM
     { MODKEY|ControlMask,           XK_r,      self_restart,   {0} },               // Restart DWM
+    { MODKEY|ControlMask,           XK_space,  change_layout,  {0} },               // Change keyboard layout
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
