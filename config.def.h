@@ -5,7 +5,7 @@
 #include "/home/elendil/.cache/wal/colors-wal-dwm.h"
 
 /* appearance */
-static const char kblayouts[3][3]   = {"it", "dk", "us"};
+static const char kblayouts[3][3]   = {"it", "dk", "us"}; /* configured keyboard layouts */
 #include "change_layout.h"
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
