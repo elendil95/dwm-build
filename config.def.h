@@ -62,13 +62,17 @@ static const Layout layouts[] = {
  *  Mod + Shift + n => apply n tag to focused window (move window to workspace n)
  *  Mod + Ctrl + n => add/remove all windows with tag n from/to view
  *  Mod + Ctrl + Shift + n => add remove n tag to/from focused window
+ *  Mod + Alt + n => move focused window on tag n on the next monitor
+ *  Mod + Alt + Shift +n => move focused window on tag n on the previous monitor 
  */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ MODKEY|Mod1Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
+	{ MODKEY|Mod1Mask|ShiftMask,    KEY,      tagprevmon,     {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -122,10 +126,10 @@ static Key keys[] = {
  // { MODKEY,                       XK_r,      togglermaster,  {0} },               // Toggle Master area on right or left
  	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },       // view all windows with any tag (view all windows on all tags at once)
 //	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },       // apply all tags to focused window (so that it shows on any tag)
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },        // Focus previous screen
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },        // Focus next screen
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },        // Send focused window to previous scr
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },        // Send focused window to next screen
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },        // Focus previous monitor
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },        // Focus next monitor
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },        // Send focused window to previous monitor
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },        // Send focused window to next monitor
 	{ MODKEY|ControlMask,           XK_minus,  setgaps,        {.i = -1 } },        // Make gaps smaller
 	{ MODKEY|ControlMask,           XK_plus,   setgaps,        {.i = +1 } },        // Make gaps bigger
 	{ MODKEY|ControlMask,           XK_equal,  setgaps,        {.i = 0  } },        // Reset gaps
