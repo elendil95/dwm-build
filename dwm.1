@@ -102,16 +102,16 @@ Increase master area size.
 Decrease master area size.
 .TP
 .B Mod\-,
-Focus previous screen, if any.
+Focus previous monitor, if any.
 .TP
 .B Mod\-.
-Focus next screen, if any.
+Focus next monitor, if any.
 .TP
 .B Mod\-Shift\-,
-Send focused window to previous screen, if any.
+Send focused window to previous monitor, if any.
 .TP
 .B Mod\-Shift\-.
-Send focused window to next screen, if any.
+Send focused window to next monitor, if any.
 .TP
 .B Mod\-tab
 Toggles between current and previous layout.
@@ -142,6 +142,12 @@ Add/remove all windows with nth tag to/from the view.
 .TP
 .B Mod\-Control\-Shift\-[1..n]
 Add/remove nth tag to/from focused window.
+.TP
+.B Mod\-Alt\-[1..n]
+Move focused window to the nth tag on the next monitor.
+.TP
+.B Mod\-Alt\-Shift\-[1..n]
+Move focused window to the nth tag on the previous monitor.
 .TP
 .B Mod\-0
 View all windows with any tag: shows all windows from every tag on a signle screen.
