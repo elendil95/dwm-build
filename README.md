@@ -9,7 +9,6 @@ My heavily customized build of dwm, with the following patches applied (in this 
 - **dwm-rotatestack** allows dwm to move windows along the stack (top of the stack == master window) using Mod+Shift+j/k
 - **dwm-rmaster** enable the user to place the master pane on the right side of the screen instead of left (configurable)
 - **dwm-selfrestart** allows dwm to restart itself upon pressing a keybind (only sorta works)
-- **dwm-pywal** a custom patch that allows dwm to pull colors from pywal, for maximum *A E S T H E T I C*
     this patch is not strictly needed for functionality, can be skipped if patching vanilla dwm from scratch
 
 ## Installation
