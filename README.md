@@ -10,6 +10,9 @@ My heavily customized build of dwm, with the following patches applied (in this 
 - **dwm-rmaster** enable the user to place the master pane on the right side of the screen instead of left (configurable)
 - **dwm-selfrestart** allows dwm to restart itself upon pressing a keybind (only sorta works)
     this patch is not strictly needed for functionality, can be skipped if patching vanilla dwm from scratch
+- **dwm-statusallmons** Allows the status bar to bw shown on all monitors, thought the systray will only appear on the the focused monitor
+- **dwm-showselmon** Visually shows what monitor is currently being focused, by reversing the colors of the status bar on the unfocused monitors.
+- **dwm-tagothermonitor** Adds new keybinds to send/focus windows to a specific tag on other monitors
 
 ## Installation
 - Configure to taste by adjusting settings in config.def.h
@@ -18,7 +21,5 @@ My heavily customized build of dwm, with the following patches applied (in this 
   otherwise you will use config files and binaries from the previous build and your config changes will not take effect
 
 ## Further documentation
-look at the source code lmao, suckless software doesn't have documentation  ¯\_(ツ)_/¯
-
-How dare you want basic information on the software you use, what are you some sort of stupid brainlet? (＃`Д´)
-
+For information on keybinds look at the man page provided with this build of dwm: `dwm(1)`.
+Documentation for other user-accessible options if provided in the source code, consult `config.def.h`.
