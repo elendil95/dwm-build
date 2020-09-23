@@ -13,6 +13,7 @@ My heavily customized build of dwm, with the following patches applied (in this 
 - **dwm-statusallmons** Allows the status bar to bw shown on all monitors, thought the systray will only appear on the the focused monitor
 - **dwm-showselmon** Visually shows what monitor is currently being focused, by reversing the colors of the status bar on the unfocused monitors.
 - **dwm-tagothermonitor** Adds new keybinds to send/focus windows to a specific tag on other monitors
+- **dwm-xrdb** adds support for Xresources/pywal inside dwm
 
 ## Installation
 - Configure to taste by adjusting settings in config.def.h
