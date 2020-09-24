@@ -127,7 +127,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_t,      togglefloating, {0} },                   // Toggle floating for the focused window
  // { MODKEY,                       XK_r,      togglermaster,  {0} },               // Toggle Master area on right or left
  	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },       // view all windows with any tag (view all windows on all tags at once)
-//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },       // apply all tags to focused window (so that it shows on any tag)
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },       // apply all tags to focused window (so that it shows on any tag)
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },        // Focus previous monitor
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },        // Focus next monitor
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },        // Send focused window to previous monitor
