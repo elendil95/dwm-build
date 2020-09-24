@@ -61,8 +61,8 @@ static const Layout layouts[] = {
  * --- TAG KEYS ---
  *  Mod + n => view windows with tag n (aka view workspace n)
  *  Mod + Shift + n => apply n tag to focused window (move window to workspace n)
- *  Mod + Ctrl + n => add/remove all windows with tag n from/to view
- *  Mod + Ctrl + Shift + n => add remove n tag to/from focused window
+ *  Mod + Ctrl + n => add/remove all windows with tag n from/to view (show tag n on current tag)
+ *  Mod + Ctrl + Shift + n => add remove n tag to/from focused window (tag current vindow with a secondary tag n)
  *  Mod + Alt + n => move focused window on tag n on the next monitor
  *  Mod + Alt + Shift +n => move focused window on tag n on the previous monitor 
  */
