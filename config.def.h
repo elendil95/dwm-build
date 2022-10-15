@@ -86,10 +86,11 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *passcmd[]  = { "keepass", NULL };
 static const char *emailcmd[]  = { "thunderbird", NULL };
-static const char *filemanagercmd[]  = { "st", "-e", "ranger", NULL };
+static const char *filemanagercmd[]  = { "thunar", NULL };
 static const char *musicplayercmd[]  = { "st", "-e", "cmus", NULL };
 static const char *calendarcmd[]  = { "st", "-e", "calcurse", NULL };
 static const char *calccmd[]  = { "gnome-calculator", NULL };
+/* static const char *guiappmenucmd[]  = { "xfce4-appfinder", NULL }; */
 
 //System Scripts/Commands
 static const char *sessmngrscript[]  = { "/home/elendil/bin/dmenu_session_manager", NULL };
@@ -100,8 +101,8 @@ static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 /* static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL }; */
-static const char *brightupcmd[] = { "urxvt", "-e", "light", "-A", "10", NULL };
-static const char *brightdowncmd[] = { "urxvt", "-e", "light", "-U", "10", NULL };
+static const char *brightupcmd[] = { "st", "-e", "light", "-A", "10", NULL };
+static const char *brightdowncmd[] = { "st", "-e", "light", "-U", "10", NULL };
 
 
 static Key keys[] = {
@@ -154,6 +155,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_m, spawn,          {.v = musicplayercmd } },
 	{ MODKEY,             XK_c, spawn,          {.v = calendarcmd } },
 	{ MODKEY|ShiftMask,             XK_c, spawn,          {.v = calccmd } },
+	/* { MODKEY|ShiftMask,             XK_r, spawn,          {.v = guiappmenucmd } }, */
 	{ MODKEY|ControlMask, XK_x, spawn,           {.v = sessmngrscript } },
 	{ MODKEY|ControlMask, XK_l, spawn,           {.v = lockscript } },
 	{ 0,                  XK_Print, spawn,           {.v = screenshotscript } },
