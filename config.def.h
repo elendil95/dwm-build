@@ -93,10 +93,10 @@ static const char *calccmd[]  = { "gnome-calculator", NULL };
 /* static const char *guiappmenucmd[]  = { "xfce4-appfinder", NULL }; */
 
 //System Scripts/Commands
-static const char *sessmngrscript[]  = { "/home/elendil/bin/dmenu_session_manager", NULL };
-static const char *lockscript[]  = { "/home/elendil/bin/lock_screen.sh", NULL };
-static const char *screenshotscript[]  = { "/home/elendil/bin/screenshot.sh", NULL };
-static const char *screenshotareascript[]  = { "/home/elendil/bin/screenshot_select.sh", NULL };
+static const char *sessmngrscript[]  = { "bin/dmenu_session_manager", NULL };
+static const char *lockscript[]  = { "bin/lock_screen.sh", NULL };
+static const char *screenshotscript[]  = { "bin/screenshot.sh", NULL };
+static const char *screenshotareascript[]  = { "bin/screenshot_select.sh", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
